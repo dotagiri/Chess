@@ -1,0 +1,39 @@
+wP    a2 -> a4
+bP    b7 -> b5
+
+wP    a4 -> a5
+bP    b5 -> b4
+
+wP    a5 -> a4
+bP    c7 -> c5
+
+wP    a4 -> a3
+bP    d7 -> d5
+
+wP    a3 -> a4
+bP    c5 -> c4
+
+wP    b2 -> b3
+bP    c4 -> c3
+
+wP    h2 -> h4
+bP    g7 -> g5
+
+wP    h4 -> g5
+bN    g8 -> f6
+
+wP    g5 -> g6
+bP    h7 -> h5
+
+wP    g6 -> g7
+bP    h5 -> h4
+
+wR    g7 -> g8
+bP    h4 -> h3
+
+wP    g2 -> g4
+bP    h3 -> h2
+
+wP    g4 -> g5
+bQ    h2 -> g1
+

@@ -1,0 +1,15 @@
+README: Simple Sockets Programming Tutorial
+-------
+
+Source URL: http://www.linuxhowtos.org/C_C++/socket.htm
+
+Two simple demo programs that establish a socket-based network
+connection via TCP/IP protocol:
+
+client.c: original source from http://www.linuxhowtos.org/data/6/client.c
+server.c: original source from http://www.linuxhowtos.org/data/6/server.c
+client2.c: client.c extended by RD
+server2.c: server.c extended by RD
+Makefile: simple build-script by RD
+
+02/10/17, RD.
