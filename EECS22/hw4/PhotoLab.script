@@ -1,0 +1,72 @@
+Script started on Sun 01 Mar 2020 03:31:36 PM PST
+]0;dotagiri@bondi:~/hw4[dotagiri@bondi ~/hw4]$ make
+gcc -ansi -std=c99 -Wall -c PhotoLab.c -o PhotoLab.o
+gcc -ansi -std=c99 -Wall -c FileIO.c -o FileIO.o
+gcc -ansi -std=c99 -Wall -c Image.c -o Image.o
+gcc -ansi -std=c99 -Wall -c Test_v2.c -o Test.o
+gcc -ansi -std=c99 -Wall -c DIPs.c -o DIPs.o
+gcc -ansi -std=c99 -Wall -c Advanced.c -o Advanced.o
+ar rc libFilter.a Advanced.o DIPs.o
+ranlib libFilter.a
+gcc -ansi -std=c99 -Wall -g PhotoLab.o FileIO.o Image.o Test.o -L. -lFilter -o PhotoLab -lm
+gcc -ansi -std=c99 -Wall -c -DDEBUG -c PhotoLab.c -o PhotoLab_DEBUG.o
+gcc -ansi -std=c99 -Wall -DDEBUG -g PhotoLab_DEBUG.o FileIO.o Image.o Test.o -L. -lFilter -o PhotoLabTest -lm
+]0;dotagiri@bondi:~/hw4[dotagiri@bondi ~/hw4]$ ./PhotoLab
+
+-------------------------
+1: Load a PPM image
+2: Save the image in PPM and JPEG format
+3: Change the color image to black and white
+4: Sharpen the image
+5: Change the hue of image
+6: Add Noise to an image
+7: Posterize an image
+8: Add Motion Blur to an image
+9: Enlarge the picture by percentage
+10: Crop a square portion of the image
+11: Adjust the Brightness and Contrast of an image
+12: Test all functions
+13: Exit
+
+-------------------------
+Please make your choice: 12
+
+-------------------------
+1: Load a PPM image
+2: Save the image in PPM and JPEG format
+3: Change the color image to black and white
+4: Sharpen the image
+5: Change the hue of image
+6: Add Noise to an image
+7: Posterize an image
+8: Add Motion Blur to an image
+9: Enlarge the picture by percentage
+10: Crop a square portion of the image
+11: Adjust the Brightness and Contrast of an image
+12: Test all functions
+13: Exit
+
+-------------------------
+Please make your choice: 13
+You exit the program.
+]0;dotagiri@bondi:~/hw4[dotagiri@bondi ~/hw4]$ valgrind --leak-check-f[K[K=full ./PhotoLabtest[K[K[K[KTest
+==109744== Memcheck, a memory error detector
+==109744== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==109744== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==109744== Command: ./PhotoLabTest
+==109744== 
+==109744== 
+==109744== HEAP SUMMARY:
+==109744==     in use at exit: 0 bytes in 0 blocks
+==109744==   total heap usage: 68 allocs, 68 frees, 9,772,544 bytes allocated
+==109744== 
+==109744== All heap blocks were freed -- no leaks are possible
+==109744== 
+==109744== For counts of detected and suppressed errors, rerun with: -v
+==109744== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 8 from 6)
+]0;dotagiri@bondi:~/hw4[dotagiri@bondi ~/hw4]$ clean all[K[K[K[K[K[K[K[Kmake clean
+rm -f *.o *.jpg PhotoLab PhotoLabTest bw.ppm sharpen.ppm hue.ppm noise.ppm posterize.ppm blur.ppm libFilter.a libFileIO.a
+]0;dotagiri@bondi:~/hw4[dotagiri@bondi ~/hw4]$ exit
+exit
+
+Script done on Sun 01 Mar 2020 03:33:16 PM PST

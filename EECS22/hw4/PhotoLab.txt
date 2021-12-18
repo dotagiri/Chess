@@ -1,0 +1,29 @@
+This program uses dynamic memory allocation from the previous assignment.
+
+I changed every fixed size RGB array to a pointer that points directly into the image structure defined in Image.h.
+
+Image.c has multiple functions to properly use dyanmic memory allocation.
+GetPixelRGB functions are meant to get the RGB values from the inputted image and return it to whatever function that calls it.
+SetPixelRGB functions changes the pixels on the image to the given values inside the argument.
+CreateImage allocates memory space for image and the RGB values.
+DeleteImage frees image and RGB values.
+
+In PhotoLab.c, menu was expanded to support additional DIP functions.
+LoadImage makes sure to free the previous loaded everytime. (To prevent memory leak)
+After a function is selected, DeleteImage is called to free the image from before.
+
+Enlarge function duplicates some pixels from the original image into new coordinates.
+Since a larger image is created here, I needed to allocate space for a new image with the larger x and y values.
+After space is allocated, new pixels are multiplied by 100/enlarge_percentage to make values into larger image.
+Then new pixels are set into the new image and the new image is returned 
+
+Square function takes inputted offset value and square value to crop image.
+If inputted offset + square size is larger than the original image, the square size must be adjusted by the offset.
+Cropped image is created by adding the x and y of the square image to the inputted offset. 
+Pixels are then set with these new values.
+
+BrightnessandContrast function adds RGB with inputted brightness and contrasted by given factor.
+I adjusted the brightness by adding the pixel intensities with inputted brightness value.
+These brightness values are then used in the contrast factor to compute the final pixel value.
+RGB values are then checked if they are in range.
+SetPixel is finally called to change RGB values to new values. 

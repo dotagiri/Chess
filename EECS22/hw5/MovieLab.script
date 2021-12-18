@@ -1,0 +1,33 @@
+Script started on Sun 15 Mar 2020 06:12:37 PM PDT
+]0;dotagiri@bondi:~/hw5[dotagiri@bondi ~/hw5]$ make
+gcc -c -ansi -std=c99 -Wall -g MovieLab.c -o MovieLab.o
+gcc -c -ansi -std=c99 -Wall -g FileIO.c -o FileIO.o 
+gcc -c -ansi -std=c99 -Wall -g DIPs.c -o DIPs.o 
+gcc -c -ansi -std=c99 -Wall -g Movie.c -o Movie.o 
+gcc -c -ansi -std=c99 -Wall -g Image.c -o Image.o
+gcc -c -ansi -std=c99 -Wall -g ImageList.c -o ImageList.o
+gcc -c -ansi -std=c99 -Wall -g MovieIO.c -o MovieIO.o
+gcc -c -ansi -std=c99 -Wall -g IterativeFilter.c -o IterativeFilter.o
+gcc -lm -ansi -std=c99 -Wall -g -L. FileIO.o DIPs.o Movie.o Image.o ImageList.o MovieIO.o IterativeFilter.o MovieLab.o -o MovieLab
+]0;dotagiri@bondi:~/hw5[dotagiri@bondi ~/hw5]$ ./MovieLab -i cone.ppm -o hue0.yuv -start 0 -end 66 -step 6 -hue
+The movie file hue0.yuv has been written successfully!
+12 frames are written to the file hue0.yuv in total.
+]0;dotagiri@bondi:~/hw5[dotagiri@bondi ~/hw5]$ ./MovieLab -m hue0.yuv -o reverse1.yuv -f 12 -s 300x200 -reverse
+The movie file hue0.yuv has been read successfully!
+Operation Reverse is done
+The movie file reverse1.yuv has been written successfully!
+12 frames are written to the file reverse1.yuv in total.
+]0;dotagiri@bondi:~/hw5[dotagiri@bondi ~/hw5]$ ./MovieLab -bw -i EH.ppm -o bw0.yuv -end 10 -start 100 -step 15
+The movie file bw0.yuv has been written successfully!
+7 frames are written to the file bw0.yuv in total.
+]0;dotagiri@bondi:~/hw5[dotagiri@bondi ~/hw5]$ ./MovieLab -reverse -o reverse2.yuv -f 7 -s 480x360 -m bw0.yuv
+The movie file bw0.yuv has been read successfully!
+Operation Reverse is done
+The movie file reverse2.yuv has been written successfully!
+7 frames are written to the file reverse2.yuv in total.
+]0;dotagiri@bondi:~/hw5[dotagiri@bondi ~/hw5]$ c[Kmake clean
+rm -f *o *.yuv MovieLab  
+]0;dotagiri@bondi:~/hw5[dotagiri@bondi ~/hw5]$ exit
+exit
+
+Script done on Sun 15 Mar 2020 06:13:35 PM PDT

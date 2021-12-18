@@ -1,0 +1,58 @@
+Firstly, my PrintMenu function is responsible for printing the menu.
+The first line of the menu should be a bunch of dashes, and following it should be each number corresponding to each filter.
+The PrintMenu ends with dashes followed with "Please make your Choice"
+
+My main function calls all the functions.
+Depending on the "choice" that the user inputted, my main function will go into a switch case for choices 1~7.
+
+If the user inputs 1, the main function will call the LoadImage function and prompt the user to input the name of the image.
+
+--------------------------------------------------
+If the user inputs 2, the main function calls SaveImage and saves an inputted image name by the user
+
+--------------------------------------------------
+If the user inputs 3, the main function calls BlackNWhite(R, G, B)
+BlackNWhite takes in R,G,B as parameters and turns the image into black and white.
+This is done through two for loops which scan through every pixel on the image.
+x is the WIDTH and y is the HEIGHT.
+Therfore, from left pixel to right pixel, the RGB values are changed with the given formula from the slides: (R+G+B)/3.
+--------------------------------------------------
+If the user inputs 4, the main function calls Sharpen(R, G, B)
+Sharpen takes in R,G,B values as parameters from the saved image.
+Sharpen takes every pixel (except the borders) and intensifies it by using its 8 neighboring pixels.
+First, I stored each RGB value into a tempR, tempG, tempB value by using a 2 for loops that go through every pixel in the image.
+Now I use the temp values instead so the original RGB values don't get corrupted.
+
+For the new intensity value, I used newtempR, newtempG, newtempB to store the values after the formula: 9*E-A-B-C-D-F-G-H-I
+Since E is the pixel I'm trying to intensity, E=tempR[x][y] where x corresponds to WIDTH and y is HEIGHT.
+Using the slides as a visual assist, A corresponds to the pixel left and 1 above of E, so it is [x-1][y+1].
+The same idea was used for B, C,D,F,G,H,I.
+Once I figured out what the variables A-I was in the formula, I plugged in the values and set it equal to newtempR,newtempG,newtempB
+
+I intensified every pixel by using 2 for loops. 
+The ranges are x+1 to WIDTH-1 and y+1 to HEIGHT-1, so the borders are excluded from intensifying. 
+
+--------------------------------------------------
+If the user inputs 5, the main function calls Hue with given degree parameter 120.
+Hue replaces the RGB values with the formula of R_old*alpha + G_old*beta + B_old * gamma.
+To use sin and cos, I defined math.h and the value of PI at the top of my code. 
+I turned 120 into a radian by multiplying PI/180 to it in the alpha,beta,gamma formulas.
+
+After the formulas and calculations, I finally replaced the RGB values with the values after the formulas.
+Then I used if statements to check if the RGB values are out of the range (0-255).
+
+--------------------------------------------------
+If the user inputs 6, the AutoTest function is called.
+AutoTest takes in RGB values as parameters.
+Proceeds to call every filter function (Aging, BlackNWhite,Sharpen, Hue).
+Before each filter is applied, the LoadImage has to be called so the original image can have the filter applied on.
+If image is not loaded every time, then the filter will just apply on top of each other (using the RGB values in each formula)
+
+Once this is completed, the user returns to the menu to see if they want to exit or apply more filters.
+ 
+--------------------------------------------------
+For every filter call, if the imageName is not loaded, then before the filter is applied, the case is broken by the if statement.
+The program will print "No image loaded" and prompt user back to menu.
+
+--------------------------------------------------
+If user inputs 7, the user exits the program and the menu doesn't print anymore.
